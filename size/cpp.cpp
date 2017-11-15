@@ -1,6 +1,7 @@
 
 
 #include <hwloc.h>
+#include <unordered_map>
 
 class Cache{
   public:
