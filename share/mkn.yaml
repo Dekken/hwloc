@@ -1,0 +1,9 @@
+
+
+name: cache_size
+main: cpp.cpp
+
+dep:
+  - name: ompi.hwloc
+    version: master
+
