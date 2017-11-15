@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <vector>
 
 int main(int argc, char *argv[])
 {
@@ -80,14 +81,18 @@ int main(int argc, char *argv[])
   obj = hwloc_get_obj_covering_cpuset(topology, set);
 
   /* display parents of type cache */
-  while (obj) {
-    if (obj->type == HWLOC_OBJ_L3CACHE) {
+  auto check = [](auto obj, auto _type){
+    if (obj->type == _type) {
       char type[64];
       char attr[64];
       hwloc_obj_type_snprintf(type, sizeof(type), obj, 0);
       hwloc_obj_attr_snprintf(attr, sizeof(attr), obj, ", ", 0);
       printf("Found object %s with attributes %s\n", type, attr);
     }
+  };
+  std::vector<uint> types { HWLOC_OBJ_L1CACHE, HWLOC_OBJ_L2CACHE , HWLOC_OBJ_L3CACHE };
+  while (obj) {
+    for(const auto& type : types) check(obj, type);
     /* next parent up in the tree */
     obj = obj->parent;
   }
