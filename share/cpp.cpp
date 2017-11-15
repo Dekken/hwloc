@@ -5,6 +5,8 @@
  * See COPYING in top-level directory.
  */
 
+// https://github.com/open-mpi/hwloc/blob/v1.11/doc/examples/sharedcaches.c
+
 #include <hwloc.h>
 #include <errno.h>
 #include <stdio.h>
