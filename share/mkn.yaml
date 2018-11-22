@@ -6,4 +6,4 @@ main: cpp.cpp
 dep:
   - name: ompi.hwloc
     version: master
-
+    scm: https://github.com/mkn-nix/ompi.hwloc
